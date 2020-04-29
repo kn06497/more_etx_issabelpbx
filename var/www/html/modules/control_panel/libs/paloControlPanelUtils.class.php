@@ -3,15 +3,10 @@
   vim: set expandtab tabstop=4 softtabstop=4 shiftwidth=4:
   Codificación: UTF-8
   +----------------------------------------------------------------------+
-  | Elastix version 1.6-3                                               |
-  | http://www.elastix.com                                               |
+  | Issabel version 1.6-3                                               |
+  | http://www.issabel.org                                               |
   +----------------------------------------------------------------------+
   | Copyright (c) 2006 Palosanto Solutions S. A.                         |
-  +----------------------------------------------------------------------+
-  | Cdla. Nueva Kennedy Calle E 222 y 9na. Este                          |
-  | Telfs. 2283-268, 2294-440, 2284-356                                  |
-  | Guayaquil - Ecuador                                                  |
-  | http://www.palosanto.com                                             |
   +----------------------------------------------------------------------+
   | The contents of this file are subject to the General Public License  |
   | (GPL) Version 2 (the "License"); you may not use this file except in |
@@ -23,7 +18,6 @@
   | the License for the specific language governing rights and           |
   | limitations under the License.                                       |
   +----------------------------------------------------------------------+
-  | The Original Code is: Elastix Open Source.                           |
   | The Initial Developer of the Original Code is PaloSanto Solutions    |
   +----------------------------------------------------------------------+
   $Id: index.php,v 1.1 2007/01/09 23:49:36 alex Exp $
@@ -135,7 +129,7 @@ class paloControlPanelUtils
     {
     	$panelgroups = array(
             'left'  =>  array('Extension', 'TrunksSIP', 'Trunks'),
-            'right' =>  array('Area1', 'Area2', 'Area3', 'Queues', 'Conferences', 'Parkinglots'),
+            'right' =>  array('Area1', 'Area2', 'Area3', 'Area4', 'Area5', 'Area6', 'Queues', 'Conferences', 'Parkinglots'),
         );
         if (!in_array($panelgroup, array_keys($panelgroups))) {
             $this->errMsg = '(internal) Invalid panel group';
@@ -195,7 +189,8 @@ class paloControlPanelUtils
         // Originar la llamada ahora
         $r = $ami->Originate($dialchan,
             $target, 'from-internal', 1,
-            NULL, NULL, NULL, "$cidname <$source>");
+            NULL, NULL, NULL, "$cidname <$source>", NULL, NULL);
+
         $ami->disconnect();
         if ($r['Response'] != 'Success') {
             $this->errMsg = '(internal) failed to Originate call';

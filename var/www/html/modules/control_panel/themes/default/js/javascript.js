@@ -130,7 +130,7 @@ $(document).ready(function() {
 		tech:			null,
 		extension:		null,
 		description:	null,
-		current_area:	'Extension',	// Extension,Area1,Area2,Area3
+		current_area:	'Extension',	// Extension,Area1,Area2,Area3,Area4,Area5,Area6
 		mailbox:		null,
 		UrgMessages:	0,
 		NewMessages:	0,
@@ -761,6 +761,9 @@ $(document).ready(function() {
 		area1: 				null,
 		area2: 				null,
 		area3: 				null,
+		area4: 				null,
+		area5: 				null,
+		area6: 				null,
 		queues:				null,
 		dahdi:				null,
 		iptrunks: 			null,
@@ -780,6 +783,9 @@ $(document).ready(function() {
 			var_init['ESTADO_PANELES']['Area1']['typedclass'] = App.Extension;
 			var_init['ESTADO_PANELES']['Area2']['typedclass'] = App.Extension;
 			var_init['ESTADO_PANELES']['Area3']['typedclass'] = App.Extension;
+			var_init['ESTADO_PANELES']['Area4']['typedclass'] = App.Extension;
+			var_init['ESTADO_PANELES']['Area5']['typedclass'] = App.Extension;
+			var_init['ESTADO_PANELES']['Area6']['typedclass'] = App.Extension;
 			var_init['ESTADO_PANELES']['Queues']['typedclass'] = App.Queue;
 			var_init['ESTADO_PANELES']['Conferences']['typedclass'] = App.Conference;
 			var_init['ESTADO_PANELES']['Parkinglots']['typedclass'] = App.Parkinglot;
@@ -790,6 +796,9 @@ $(document).ready(function() {
 			this.area1 = App.PBXPanelController.create(var_init['ESTADO_PANELES']['Area1']);
 			this.area2 = App.PBXPanelController.create(var_init['ESTADO_PANELES']['Area2']);
 			this.area3 = App.PBXPanelController.create(var_init['ESTADO_PANELES']['Area3']);
+			this.area4 = App.PBXPanelController.create(var_init['ESTADO_PANELES']['Area4']);
+			this.area5 = App.PBXPanelController.create(var_init['ESTADO_PANELES']['Area5']);
+			this.area6 = App.PBXPanelController.create(var_init['ESTADO_PANELES']['Area6']);
 			this.queues = App.PBXPanelController.create(var_init['ESTADO_PANELES']['Queues']);
 			this.conferences = App.PBXPanelController.create(var_init['ESTADO_PANELES']['Conferences']);
 			this.parkinglots = App.PBXPanelController.create(var_init['ESTADO_PANELES']['Parkinglots']);
@@ -864,7 +873,7 @@ $(document).ready(function() {
 		localizarControladorExtension: function(key, value) {
 			var controller = null;
 			var objpos = null;
-			var controllerList = ['extensions', 'area1', 'area2', 'area3'];
+			var controllerList = ['extensions', 'area1', 'area2', 'area3', 'area4', 'area5', 'area6'];
 			for (var i = 0; i < controllerList.length; i++) {
 				var c = this.get(controllerList[i]);
 				if (c == null) return null;
@@ -931,7 +940,7 @@ $(document).ready(function() {
 			}
 			
 			// Indicar a todos los controladores que se terminó la carga
-			var controlkeys = ['extensions', 'area1', 'area2', 'area3', 'queues',
+			var controlkeys = ['extensions', 'area1', 'area2', 'area3', 'area4', 'area5', 'area6', 'queues',
 			                   'conferences', 'parkinglots', 'dahdi', 'iptrunks'];
 			for (var i = 0; i < controlkeys.length; i++) {
 				this.get(controlkeys[i]).set('finishedloading', true);
@@ -950,6 +959,9 @@ $(document).ready(function() {
 				case 'Area1': controller = this.get('area1'); break;
 				case 'Area2': controller = this.get('area2'); break;
 				case 'Area3': controller = this.get('area3'); break;
+				case 'Area4': controller = this.get('area4'); break;
+				case 'Area5': controller = this.get('area5'); break;
+				case 'Area6': controller = this.get('area6'); break;
 				}
 				break;
 			case 'conferences':
@@ -1038,11 +1050,11 @@ $(document).ready(function() {
 		// Mandar a actualizar al servidor el tamaño del panel
 		updatePanelSize: function(sourcePanel, width, height) {
 			var leftPanels = ['Extension', 'TrunksSIP', 'Trunks'];
-			var rightPanels = ['Area1', 'Area2', 'Area3', 'Queues', 'Conferences', 'Parkinglots'];
+			var rightPanels = ['Area1', 'Area2', 'Area3', 'Area4', 'Area5', 'Area6', 'Queues', 'Conferences', 'Parkinglots'];
 			
 			var panelGroups = {
 				'left': [this.extensions, this.iptrunks, this.dahdi],
-				'right': [this.area1, this.area2, this.area3, this.queues, this.conferences, this.parkinglots]
+				'right': [this.area1, this.area2, this.area3, this.area4, this.area5, this.area6, this.queues, this.conferences, this.parkinglots]
 			};
 			var pgroup = null;
 

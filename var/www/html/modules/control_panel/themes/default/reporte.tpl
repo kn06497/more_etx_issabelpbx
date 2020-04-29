@@ -135,6 +135,67 @@
 {{/view}}
 {/literal}
 
+{* La lista de las extensiones asignadas al área 4 *}
+{literal}
+{{#view App.PBXPanelView controllerBinding="area4" }}
+	{{view App.EditableTitleView }}
+	<dd>
+	{{#if finishedloading}}
+	{{#view App.SortablePanelView }}
+		{{#each }}
+		{{view App.ExtensionView}}
+		{{else}}
+		<br/>
+		{{/each}}
+	{{/view}}
+    {{else}}
+    <img class="icon" src="modules/{/literal}{$module_name}{literal}/images/loading.gif"/>
+    {{/if}}
+	</dd>
+{{/view}}
+{/literal}
+
+{* La lista de las extensiones asignadas al área 5 *}
+{literal}
+{{#view App.PBXPanelView controllerBinding="area5" }}
+	{{view App.EditableTitleView }}
+	<dd>
+	{{#if finishedloading}}
+	{{#view App.SortablePanelView }}
+		{{#each }}
+		{{view App.ExtensionView}}
+		{{else}}
+		<br/>
+		{{/each}}
+	{{/view}}
+    {{else}}
+    <img class="icon" src="modules/{/literal}{$module_name}{literal}/images/loading.gif"/>
+    {{/if}}
+	</dd>
+{{/view}}
+{/literal}
+
+{* La lista de las extensiones asignadas al área 6 *}
+{literal}
+{{#view App.PBXPanelView controllerBinding="area6" }}
+	{{view App.EditableTitleView }}
+	<dd>
+	{{#if finishedloading}}
+	{{#view App.SortablePanelView }}
+		{{#each }}
+		{{view App.ExtensionView}}
+		{{else}}
+		<br/>
+		{{/each}}
+	{{/view}}
+    {{else}}
+    <img class="icon" src="modules/{/literal}{$module_name}{literal}/images/loading.gif"/>
+    {{/if}}
+	</dd>
+{{/view}}
+{/literal}
+
+
 {* La lista de las conferencias *}
 {literal}
 {{#view App.PBXPanelView controllerBinding="conferences" }}
